@@ -1,0 +1,2 @@
+# PEP 561 marker file — declares ``vary_parse`` as a typed package.
+# See https://peps.python.org/pep-0561/ for the contract.
