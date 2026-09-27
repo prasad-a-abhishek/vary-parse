@@ -17,7 +17,7 @@ edit this SPEC first and reference it in the commit message.
 **PyPI package name:** `vary-parse`
 **npm package name:** `vary-parse` (optional Node.js sibling, dual-publish)
 
-**`check_existing.py` output:**
+**`check_existing.py` output (captured at discovery time, BEFORE the local project was created):**
 
 `python3 /root/.hermes/repo_factory/scripts/check_existing.py --name "vary-parse" --concept "vary-response-header-field" --keywords ""` — full output:
 
