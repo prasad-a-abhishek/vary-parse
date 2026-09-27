@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vary-parse"
+version = "0.1.0"
+description = "Zero-dependency RFC 9110 \u00a712.5.5 HTTP Vary response header parser and cache-key normalizer"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "vary-parse authors"},
+]
+keywords = [
+    "vary",
+    "http",
+    "rfc-9110",
+    "header",
+    "parser",
+    "cache-key",
+    "content-negotiation",
+    "9110",
+    "12.5.5",
+    "selecting-headers",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/prasad-a-abhishek/vary-parse"
+Repository = "https://github.com/prasad-a-abhishek/vary-parse"
+
+[project.scripts]
+vary-parse = "vary_parse.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vary_parse = ["py.typed"]

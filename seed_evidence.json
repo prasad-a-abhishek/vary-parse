@@ -1,0 +1,64 @@
+{
+  "algorithm": "RFC 9110 \u00a712.5.5 HTTP Vary response header field parser",
+  "spec_authority": "IETF RFC 9110 'HTTP Semantics' (June 2022), \u00a712.5.5 + Appendix B.2 ABNF; companion RFC 9111 \u00a74.1 (cache-key construction)",
+  "abnf": "Vary = [ ( \"*\" / field-name ) *( OWS \",\" OWS ( \"*\" / field-name ) ) ]",
+  "primary_sources": [
+    "https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.5  (RFC 9110 \u00a712.5.5 - normative spec; HTTP/2 200)",
+    "https://www.rfc-editor.org/rfc/rfc9110.txt  (RFC 9110 Appendix B.2 line 9823 - ABNF Vary rule; HTTP/2 200)",
+    "https://datatracker.ietf.org/doc/html/rfc9110  (IETF datatracker mirror of RFC 9110; HTTP/2 200)",
+    "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Vary  (MDN developer reference, redirects from legacy /docs/Web/HTTP/Headers/Vary; HTTP/2 200)",
+    "https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1  (RFC 9111 \u00a74.1 - cache-key calculation with Vary; HTTP/2 200)"
+  ],
+  "name_probes": [
+    "https://pypi.org/pypi/vary-parse/json  (HTTP/2 404 - name free on PyPI, verified 2026-09-27)",
+    "https://registry.npmjs.org/vary-parse  (HTTP/2 404 - name free on npm, verified 2026-09-27)"
+  ],
+  "check_existing_verdict": "APPROVED",
+  "check_existing_command": "python3 /root/.hermes/repo_factory/scripts/check_existing.py --name vary-parse --concept vary-response-header-field --keywords \"\"",
+  "check_existing_output_last_lines": [
+    "4. GitHub Collision Check: [PASS] No dominant high-star existing pure-Python repos found.",
+    "------------------------------------------------------------",
+    "FINAL VERDICT: APPROVED",
+    "============================================================"
+  ],
+  "vectors": [
+    {"input": "",                                 "parsed": {"field_names": [], "wildcard": false}, "serialize": "",                            "source": "RFC 9110 \u00a712.5.5 \u00b65 (empty value, not wildcard)"},
+    {"input": "*",                                "parsed": {"field_names": [], "wildcard": true},  "serialize": "*",                            "source": "RFC 9110 \u00a712.5.5 \u00b64 (wildcard member)"},
+    {"input": "Accept",                           "parsed": {"field_names": ["Accept"], "wildcard": false}, "serialize": "Accept",                  "source": "RFC 9110 \u00a712.5.5 \u00b65 (single selecting field)"},
+    {"input": "accept-encoding, accept-language", "parsed": {"field_names": ["accept-encoding", "accept-language"], "wildcard": false}, "serialize": "accept-encoding, accept-language", "source": "RFC 9110 \u00a712.5.5 \u00b65 (canonical example verbatim)"},
+    {"input": "  Accept-Encoding  ,\tUser-Agent  ", "parsed": {"field_names": ["Accept-Encoding", "User-Agent"], "wildcard": false}, "serialize": "Accept-Encoding, User-Agent", "source": "RFC 9110 \u00a75.6.3 OWS tolerance test"},
+    {"input": "*, Accept",                        "parsed": {"field_names": [], "wildcard": true},  "serialize": "*",                            "source": "RFC 9110 \u00a712.5.5 \u00b64 (wildcard takes precedence; field names dropped)"},
+    {"input": "X-Custom-Flag, Accept-Language, x-other", "parsed": {"field_names": ["X-Custom-Flag", "Accept-Language", "x-other"], "wildcard": false}, "serialize": "X-Custom-Flag, Accept-Language, x-other", "source": "RFC 9110 \u00a75.6.2 (case-preserving; case-insensitive comparison is consumer's job)"},
+    {"input": "Accept,,User-Agent",               "parsed": {"field_names": ["Accept", "User-Agent"], "wildcard": false}, "serialize": "Accept, User-Agent",       "source": "RFC 9110 \u00a75.6.1 (empty list entries silently dropped, robust-parsing convention)"},
+    {"input": "A, B, C",                          "parsed": {"field_names": ["A", "B", "C"], "wildcard": false}, "serialize": "A, B, C",                "source": "RFC 9110 \u00a75.6.2 (single-char tokens are valid per tchar ABNF)"},
+    {"input": ",,",                               "parsed": {"field_names": [], "wildcard": false}, "serialize": "",                            "source": "RFC 9110 \u00a712.5.5 (empty list, not wildcard)"}
+  ],
+  "cache_key_examples": [
+    {"vary_input": "accept-encoding, accept-language", "request_headers": {"accept-encoding": "gzip", "accept-language": "en-US"}, "expected_cache_key": {"vary_accept-encoding": "gzip", "vary_accept-language": "en-US"}, "source": "RFC 9111 \u00a74.1 + RFC 9110 \u00a75.5 case-insensitive matching"},
+    {"vary_input": "*",                                "request_headers": {"accept": "*/*"}, "expected_cache_key": null, "source": "RFC 9110 \u00a712.5.5 \u00b64 (wildcard -> do not cache; returns None)"}
+  ],
+  "build_target_test_count": 100,
+  "ac_count": 12,
+  "factories_shipped_already": [
+    "cache-control-parse (RFC 9111) - Cache-Control directives",
+    "etagparse (RFC 9110) - ETag + If-Match / If-None-Match / If-Range",
+    "content-range-parse (RFC 9110) - Content-Range byte-range",
+    "if-range-parse (RFC 9110) - If-Range entity-tag-or-HTTP-date",
+    "age-parse (RFC 9111) - Age seconds",
+    "accept-ch-parse (RFC 8942) - Accept-CH client-hints q-value",
+    "accept-encoding-parse (RFC 9110) - Accept-Encoding q-value",
+    "accept-header (RFC 9110) - Accept media-type q-value",
+    "server-timing-parse (RFC 8942) - Server-Timing",
+    "sec-fetch-parse (RFC 7231) - Sec-Fetch-* metadata",
+    "digest-fields-parse (RFC 9530) - Digest fields",
+    "permissions-policy-parse (W3C) - Permissions-Policy",
+    "allow-parse (RFC 9110) - Allow method list",
+    "alt-svc-parse (RFC 7838) - Alt-Svc",
+    "ratelimit-headers (RFC 9610) - RateLimit-*",
+    "retry-after (RFC 9110) - Retry-After seconds-or-HTTP-date",
+    "linkheader (RFC 8288) - Link header",
+    "bearerparse (RFC 6750/7235) - Authorization challenge",
+    "sfvparse (RFC 8941) - Structured Fields (generic)"
+  ],
+  "disambiguation_summary": "vary-parse is distinct from every shipped parser: vs. etagparse the wildcard * means 'do not cache locally' (not entity-tag-match); vs. cache-control-parse there is no '=' syntax and no closed directive vocabulary; vs. sfvparse Vary is intentionally NOT a Structured Field (RFC 8941 \u00a71.3 compatibility-listed). vary-parse is the only header parser in the family that implements the wildcard semantics and the cache-key construction helper."
+}
