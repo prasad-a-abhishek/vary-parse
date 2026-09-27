@@ -1,0 +1,6 @@
+vary_cache_key("Accept, Accept-Encoding", {"Accept": "text/html",
+"Accept-Encoding": "gzip"}) returned
+{"vary_accept": "text/html", "vary_accept-encoding": "gzip"}
+without raising.
+
+Actual behaviour matches documented expected behaviour.

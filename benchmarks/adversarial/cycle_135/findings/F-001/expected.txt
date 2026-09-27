@@ -1,0 +1,6 @@
+vary_cache_key("X-Foo", {"X-Foo": b"bytes-value"}) returns
+{"vary_x-foo": b"bytes-value"} without raising.
+
+The function signature advertises Mapping[str, str]; passing
+non-str values is a contract violation by the caller, but the
+function is total over the documented input domain.

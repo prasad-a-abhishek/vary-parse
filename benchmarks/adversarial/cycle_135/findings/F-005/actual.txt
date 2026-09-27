@@ -1,0 +1,4 @@
+11,000 type-error rejections across the documented non-str pool
+completed in milliseconds (~hundreds of thousands of iters/s).
+Empty str correctly accepted as a valid input (AC1).
+Actual behaviour matches expected.

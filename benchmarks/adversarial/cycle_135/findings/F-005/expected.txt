@@ -1,0 +1,6 @@
+Every non-str input to parse_vary / serialize_vary / vary_cache_key
+raises TypeError in O(1) time per call. The aggregate run completes
+at very high iters/s (hundreds of thousands).
+
+Empty string is excluded from the pool because it is a valid str per
+AC1 (parse_vary("") -> Vary((), False)) and correctly does NOT raise.

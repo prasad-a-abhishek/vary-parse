@@ -1,0 +1,3 @@
+parse_vary of a 1 MiB single-token string completes in sub-second
+time, with linear memory allocation, inside the 10 s subprocess
+timeout. T3 CORPUS_RUN §4.3 confirmed this.

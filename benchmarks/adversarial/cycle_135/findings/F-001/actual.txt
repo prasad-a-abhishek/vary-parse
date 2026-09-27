@@ -1,0 +1,4 @@
+vary_cache_key("X-Foo", {"X-Foo": b"bytes-value"}) returned
+{"vary_x-foo": b"bytes-value"} without raising.
+
+Actual behaviour matches documented expected behaviour.

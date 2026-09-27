@@ -1,0 +1,3 @@
+A single CLI invocation (`python3 -m vary_parse --parse "..."`)
+exits 0 in under 1 s on this host, with stdout "Accept,Accept-Encoding"
+(no space after comma — CLI applies its own join).

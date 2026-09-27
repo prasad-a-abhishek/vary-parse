@@ -1,0 +1,2 @@
+Single CLI invocation exited 0 in sub-second time with stdout
+"Accept,Accept-Encoding" (no space). Actual behaviour matches expected.

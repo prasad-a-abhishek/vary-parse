@@ -1,0 +1,4 @@
+parse_vary of a 1 MiB single-token string returned a Vary with
+the expected single field name in sub-second time, without OOM.
+
+Actual behaviour matches documented expected behaviour.

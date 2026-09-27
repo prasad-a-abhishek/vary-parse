@@ -1,0 +1,4 @@
+parse_vary of a 1 MiB single-token string returns a Vary with a
+single field name (preserved) in linear time, without OOM.
+
+T3 CORPUS_RUN §4.3 confirmed this behaviour at the 1 MiB profile.

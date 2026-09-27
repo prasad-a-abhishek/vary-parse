@@ -1,0 +1,4 @@
+vary_cache_key with Mapping[str, str] (happy path) returns the
+expected {"vary_<lname>": <value>, ...} dict without raising.
+
+The function is total over the documented Mapping[str, str] input.

@@ -1,0 +1,1 @@
+(empty — no exception was raised to the user; all bad inputs were rejected with TypeError as expected)

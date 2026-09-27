@@ -1,0 +1,1 @@
+(empty — no exception was raised; this is a behavioural observation, not a crash)
