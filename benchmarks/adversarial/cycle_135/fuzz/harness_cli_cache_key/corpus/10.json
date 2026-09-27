@@ -1,0 +1,1 @@
+{"req": {"X-Forwarded-For": "1.2.3.4"}, "vary": "X-Forwarded-For, X-Real-IP"}

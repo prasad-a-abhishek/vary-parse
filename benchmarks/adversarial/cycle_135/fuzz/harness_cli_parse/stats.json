@@ -1,0 +1,19 @@
+{
+  "crash_samples": [],
+  "crashes": 0,
+  "duration_s": 54.17094,
+  "ended_utc": "2026-09-27T20:19:34Z",
+  "exit_code": 0,
+  "hangs": 0,
+  "harness_self_error": null,
+  "iters": 1500,
+  "iters_per_second": 27.69,
+  "oom": 0,
+  "oracle_mismatch_samples": [],
+  "oracle_mismatches": 0,
+  "python": "3.11.15",
+  "seed": 54324593519755265,
+  "started_utc": "2026-09-27T20:18:40Z",
+  "surface": "harness_cli_parse",
+  "verdict": "CLEAN"
+}

@@ -1,19 +1,19 @@
 {
   "argv": [
     "--iters",
-    "100"
+    "150000"
   ],
   "crashes": [],
-  "elapsed_seconds": 0.033779,
-  "ended_utc": "2026-09-27T20:14:21Z",
+  "elapsed_seconds": 49.487015,
+  "ended_utc": "2026-09-27T20:18:40Z",
   "exit_code": 0,
   "harness_self_error": null,
-  "iters_clean": 100,
-  "iters_requested": 100,
+  "iters_clean": 150000,
+  "iters_requested": 150000,
   "oracle_mismatches": [],
   "python": "3.11.15",
   "seed": 54324593519755265,
-  "started_utc": "2026-09-27T20:14:21Z",
+  "started_utc": "2026-09-27T20:17:50Z",
   "surface": "harness_serialize_main",
   "verdict": "CLEAN"
 }
